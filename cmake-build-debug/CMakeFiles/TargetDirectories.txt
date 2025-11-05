@@ -1,0 +1,3 @@
+/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/CMakeFiles/PacAvanture.dir
+/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/CMakeFiles/rebuild_cache.dir
