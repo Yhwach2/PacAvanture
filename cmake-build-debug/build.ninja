@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/
+cmake_ninja_workdir = /Users/belluciwz/Desktop/PacAvanture/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target PacAvanture
 
@@ -49,10 +49,51 @@ cmake_ninja_workdir = /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-deb
 
 build cmake_object_order_depends_target_PacAvanture: phony || .
 
-build CMakeFiles/PacAvanture.dir/src/main.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/src/main.cpp || cmake_object_order_depends_target_PacAvanture
+build CMakeFiles/PacAvanture.dir/src/main.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/Desktop/PacAvanture/src/main.cpp || cmake_object_order_depends_target_PacAvanture
   CONFIG = Debug
   DEP_FILE = CMakeFiles/PacAvanture.dir/src/main.cpp.o.d
-  FLAGS = -g -std=gnu++20 -arch arm64 -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
+  OBJECT_DIR = CMakeFiles/PacAvanture.dir
+  OBJECT_FILE_DIR = CMakeFiles/PacAvanture.dir/src
+
+build CMakeFiles/PacAvanture.dir/src/Game.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/Desktop/PacAvanture/src/Game.cpp || cmake_object_order_depends_target_PacAvanture
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/PacAvanture.dir/src/Game.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
+  OBJECT_DIR = CMakeFiles/PacAvanture.dir
+  OBJECT_FILE_DIR = CMakeFiles/PacAvanture.dir/src
+
+build CMakeFiles/PacAvanture.dir/src/Player.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/Desktop/PacAvanture/src/Player.cpp || cmake_object_order_depends_target_PacAvanture
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/PacAvanture.dir/src/Player.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
+  OBJECT_DIR = CMakeFiles/PacAvanture.dir
+  OBJECT_FILE_DIR = CMakeFiles/PacAvanture.dir/src
+
+build CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/Desktop/PacAvanture/src/Enemy.cpp || cmake_object_order_depends_target_PacAvanture
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
+  OBJECT_DIR = CMakeFiles/PacAvanture.dir
+  OBJECT_FILE_DIR = CMakeFiles/PacAvanture.dir/src
+
+build CMakeFiles/PacAvanture.dir/src/Map.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/Desktop/PacAvanture/src/Map.cpp || cmake_object_order_depends_target_PacAvanture
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/PacAvanture.dir/src/Map.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
+  OBJECT_DIR = CMakeFiles/PacAvanture.dir
+  OBJECT_FILE_DIR = CMakeFiles/PacAvanture.dir/src
+
+build CMakeFiles/PacAvanture.dir/src/InputHandler.cpp.o: CXX_COMPILER__PacAvanture_unscanned_Debug /Users/belluciwz/Desktop/PacAvanture/src/InputHandler.cpp || cmake_object_order_depends_target_PacAvanture
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/PacAvanture.dir/src/InputHandler.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -fcolor-diagnostics
+  INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
   OBJECT_DIR = CMakeFiles/PacAvanture.dir
   OBJECT_FILE_DIR = CMakeFiles/PacAvanture.dir/src
 
@@ -64,7 +105,7 @@ build CMakeFiles/PacAvanture.dir/src/main.cpp.o: CXX_COMPILER__PacAvanture_unsca
 #############################################
 # Link the executable PacAvanture
 
-build PacAvanture: CXX_EXECUTABLE_LINKER__PacAvanture_Debug CMakeFiles/PacAvanture.dir/src/main.cpp.o
+build PacAvanture: CXX_EXECUTABLE_LINKER__PacAvanture_Debug CMakeFiles/PacAvanture.dir/src/main.cpp.o CMakeFiles/PacAvanture.dir/src/Game.cpp.o CMakeFiles/PacAvanture.dir/src/Player.cpp.o CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o CMakeFiles/PacAvanture.dir/src/Map.cpp.o CMakeFiles/PacAvanture.dir/src/InputHandler.cpp.o
   CONFIG = Debug
   FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/PacAvanture.dir
@@ -78,7 +119,7 @@ build PacAvanture: CXX_EXECUTABLE_LINKER__PacAvanture_Debug CMakeFiles/PacAvantu
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/belluciwz/Desktop/PacAvanture/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -89,7 +130,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S/Users/belluciwz/CLionProjects/PacAvanture -B/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug
+  COMMAND = cd /Users/belluciwz/Desktop/PacAvanture/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S/Users/belluciwz/Desktop/PacAvanture -B/Users/belluciwz/Desktop/PacAvanture/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -105,14 +146,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug
-
-build codegen: phony
-
-# =============================================================================
-
-#############################################
-# Folder: /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug
+# Folder: /Users/belluciwz/Desktop/PacAvanture/cmake-build-debug
 
 build all: phony PacAvanture
 
@@ -123,14 +157,14 @@ build all: phony PacAvanture
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/cmake_install.cmake: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Users/belluciwz/CLionProjects/PacAvanture/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
+build build.ninja /Users/belluciwz/Desktop/PacAvanture/cmake-build-debug/cmake_install.cmake: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Users/belluciwz/Desktop/PacAvanture/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Users/belluciwz/CLionProjects/PacAvanture/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Linker/AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/Linker/Apple-AppleClang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /Users/belluciwz/Desktop/PacAvanture/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
 
 
 #############################################

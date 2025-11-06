@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "4.0"
+						"string" : "3.10"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PacAvanture::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PacAvanture-Debug-b1c699c941a8a291e5ec.json",
+					"jsonFile" : "target-PacAvanture-Debug-41c143d3fc142c0e4c21.json",
 					"name" : "PacAvanture",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug",
-		"source" : "/Users/belluciwz/CLionProjects/PacAvanture"
+		"build" : "/Users/belluciwz/Desktop/PacAvanture/cmake-build-debug",
+		"source" : "/Users/belluciwz/Desktop/PacAvanture"
 	},
 	"version" : 
 	{

@@ -1,11 +1,16 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.10)
 project(PacAvanture)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(PacAvanture cmake-build-debug/src/main.cpp
-        src/Game.h
-        src/Player.h
-        src/Enemy.h
-        src/Map.h
-        src/InputHandler.h)
+include_directories(include)
+
+add_executable(PagcAvanture
+        src/main.cpp
+        src/Game.cpp
+        src/Player.cpp
+        src/Enemy.cpp
+        src/Map.cpp
+        src/InputHandler.cpp
+)

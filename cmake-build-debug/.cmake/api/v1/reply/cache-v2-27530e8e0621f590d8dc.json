@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug"
+			"value" : "/Users/belluciwz/Desktop/PacAvanture/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -495,7 +495,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/belluciwz/Desktop/PacAvanture/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -555,7 +555,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/belluciwz/CLionProjects/PacAvanture"
+			"value" : "/Users/belluciwz/Desktop/PacAvanture"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1155,7 +1155,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/belluciwz/CLionProjects/PacAvanture/cmake-build-debug"
+			"value" : "/Users/belluciwz/Desktop/PacAvanture/cmake-build-debug"
 		},
 		{
 			"name" : "PacAvanture_IS_TOP_LEVEL",
@@ -1179,7 +1179,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/belluciwz/CLionProjects/PacAvanture"
+			"value" : "/Users/belluciwz/Desktop/PacAvanture"
 		}
 	],
 	"kind" : "cache",
