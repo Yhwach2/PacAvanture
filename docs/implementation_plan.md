@@ -5,20 +5,8 @@ Console maze game: move, collect coins, avoid enemies, reach gate.
 
 ---
 
-## Feature 1: Player movement (arrow keys)
-**Trigger:** Player presses an arrow key during the game loop.
-**Input:** Arrow key sequence read by InputHandler.
-**Flow:**
-1. Game::update() calls input.getMovementDelta().
-2. If delta non-zero, Game asks Player::move(dx,dy,mapWidth,mapHeight).
-3. Player::move checks Map::isWall() to prevent walking into walls.
-4. If moved, Game calls handleCollisions() to resolve coin/enemy/gate interactions.
-   **Data modified:** Player position updated.
-   **Completion:** Player is in new tile, render will show new position.
 
----
-
-## Feature 2: Coin collection
+## Feature 1: Coin collection
 **Trigger:** Player moves onto a tile containing a coin.
 **Input:** Player position after move.
 **Flow:**
@@ -31,7 +19,7 @@ Console maze game: move, collect coins, avoid enemies, reach gate.
 
 ---
 
-## Feature 3: Enemy patrols
+## Feature 2: Enemy patrols
 **Trigger:** Each game tick (Game::update).
 **Input:** Enemy objects with patrol patterns.
 **Flow:**
@@ -42,7 +30,7 @@ Console maze game: move, collect coins, avoid enemies, reach gate.
 
 ---
 
-## Feature 4: Gate / victory
+## Feature 3: Gate / victory
 **Trigger:** All coins collected; player reaches gate position.
 **Flow:**
 1. When remainingCoins == 0 Map::openGate() sets the gate to open state.
@@ -51,7 +39,7 @@ Console maze game: move, collect coins, avoid enemies, reach gate.
 
 ---
 
-## Feature 5: Rendering
+## Feature 4: Rendering
 **Trigger:** Each tick after update.
 **Flow:**
 1. Game::render calls Map::render(playerX, playerY, enemyPositions, gateOpen).

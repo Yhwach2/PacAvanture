@@ -6,11 +6,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include_directories(include)
 
-add_executable(PagcAvanture
+set(SOURCES
         src/main.cpp
-        src/Game.cpp
-        src/Player.cpp
-        src/Enemy.cpp
         src/Map.cpp
-        src/InputHandler.cpp
+        src/Player.cpp
 )
+
+add_executable(PacAvanture ${SOURCES})
+
+# test
+enable_testing()
+
+add_executable(test_map
+        tests/test_map.cpp
+        src/Map.cpp
+        src/Player.cpp
+)
+
+add_test(NAME MapTests COMMAND test_map)

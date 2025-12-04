@@ -1,26 +1,20 @@
 
 #ifndef PACAVANTURE_PLAYER_H
 #define PACAVANTURE_PLAYER_H
-#include <utility>
-
-/**
- * Player represents the controllable Pacman-like character.
- */
 class Player {
 public:
     Player();
-    Player(int startX, int startY);
+    Player(int x, int y);
 
-    // movement: dx,dy are -1/0/1; returns true if moved
-    bool move(int dx, int dy, const int mapWidth, const int mapHeight);
-    std::pair<int,int> getPosition() const;
-    void setPosition(int x, int y);
     int getX() const;
     int getY() const;
+    void setPosition(int x, int y);
 
-    // coin collection
-    void collectCoin();
+    // attempt move, returns true if moved
+    bool moveDelta(int dx, int dy, int mapW, int mapH);
+
     int getScore() const;
+    void addScore(int v);
 
 private:
     int x;

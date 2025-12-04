@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "PacAvanture",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PacAvanture::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PacAvanture-Debug-41c143d3fc142c0e4c21.json",
+					"jsonFile" : "target-PacAvanture-Debug-0431324707564f54c770.json",
 					"name" : "PacAvanture",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_map::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_map-Debug-57ca4d09e498d51bff1d.json",
+					"name" : "test_map",
 					"projectIndex" : 0
 				}
 			]

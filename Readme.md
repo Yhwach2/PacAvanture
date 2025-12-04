@@ -1,25 +1,24 @@
-# Pac advanture
-A console-based maze game where the player moves freely in 4 directions, collects coins, avoids enemies, and reaches the exit gate to win.
+## Current Status (Checkpoint 1)
 
-## Features
-- Player movement in 4 directions using arrow keys
-- Collectible coins scattered across the map
-- Enemies that patrol in fixed movement patterns
-- Gate/exit that opens once all coins are collected
-- Game over when the player is caught by an enemy
-- Console map rendering showing player, enemies, walls, coins, and gate
+### ✅ Implemented Features
+- **Complete Map System**: 20x12 grid with walls, random coins, and a gate
+- **Player System**: Position tracking, movement, and score collection
+- **Automated Testing**: 3 comprehensive unit tests via CTest framework
+- **Build System**: CMake builds executable and tests successfully
 
-## What is postponed
-- Power-ups (invincibility, speed boost)
-- Multiple levels or maps
-- Saving/loading game state
+### ⏳ In Progress
+- **Game Loop**: Connecting all components into a playable game
+- **Input Handling**: WASD movement system
 
-## Building
-```bash
-mkdir build
-cd build
-cmake ..
-cmake --build 
-# PacAvanture
-# PacAvanture
-# PacAvanture
+### 📋 Planned Features
+1. **Enemy Patrol System** - Enemies with fixed movement patterns
+2. **Collision Detection** - Player-enemy and player-gate collisions
+3. **Victory Conditions** - Collect all coins, reach open gate to win
+4. **Improved Rendering** - Color support, better visuals
+5. **Sound Effects** - Optional stretch goal
+
+###  Known Issues
+- No continuous game loop yet (runs once then exits)
+- Input handling not yet connected to movement
+- Enemy system not implemented
+- Gate unlocking logic not connected to coin collection

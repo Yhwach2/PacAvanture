@@ -1,12 +1,15 @@
+#include "../include/Map.h"
+#include "../include/Player.h"
 #include <iostream>
-#include "Game.h"
 
 int main() {
-    // TODO: Create Game object and run
-    // Game game;
-    // game.run();
+    Map map(20, 12);
+    Player player;
 
-    std::cout << "Pac advanture - skeleton main\n";
-    std::cout << "This project scaffold is ready. Implement Game.cpp and other sources.\n";
+    map.initialize();
+    map.placePlayer(player);
+
+    map.draw(player);
+
     return 0;
 }

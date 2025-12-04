@@ -3,40 +3,45 @@
 
 #include <vector>
 #include <string>
+#include "Player.h"
 
-/**
- * Map stores grid layout: walls, empty space, coins, gate.
- * It provides rendering and basic queries (isWall, hasCoin, removeCoin).
- */
 class Map {
 public:
-    Map();
-    Map(int width, int height);
+    Map(int width = 20, int height = 12);
+    ~Map();
 
+    // --- Public Getters ---
     int getWidth() const;
     int getHeight() const;
 
-    // Rendering: returns a vector<string> where each string is a row
-    std::vector<std::string> render(int playerX, int playerY,
-                                    const std::vector<std::pair<int,int>>& enemyPositions,
-                                    bool gateOpen) const;
+    // --- Map Ops ---
+    void initialize();
+    void placePlayer(Player &player);
+    void draw(const Player &player) const;
 
+    bool isInside(int x, int y) const;
     bool isWall(int x, int y) const;
-    bool hasCoin(int x, int y) const;
-    void removeCoin(int x, int y);
-    std::pair<int,int> getGatePosition() const;
-    void openGate();
 
-    // load or generate map
-    void generateDefault();
+    // --- Coin Logic ---
+    int totalCoins() const;
+    bool hasCoinAt(int x, int y) const;
+    void collectCoinAt(int x, int y);
+    int remainingCoins() const;
 
-    int countCoins() const;
+    // --- Gate Logic ---
+    void setGateLocked(bool locked);
+    bool gateLocked() const;
 
 private:
     int width;
     int height;
-    std::vector<std::string> grid; // characters: '#' wall, '.' floor, 'o' coin, 'G' gate closed, 'g' gate open
-    bool gateOpen;
+
+    std::vector<std::string> grid;
+
+    int coinCount;
+    int gateX, gateY;
+    bool gate_is_locked;
 };
 
-#endif //PACAVANTURE_MAP_H
+#endif
+l
