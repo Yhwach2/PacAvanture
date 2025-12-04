@@ -1,0 +1,25 @@
+# Build directories
+build/
+cmake-build-*/
+CMakeFiles/
+
+# Executables
+PacAvanture
+test_map
+test_powerups
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dylib
