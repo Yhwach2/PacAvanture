@@ -86,10 +86,24 @@ CMakeFiles/PacAvanture.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PacAvanture.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/belluciwz/Desktop/PacAvanture/src/main.cpp -o CMakeFiles/PacAvanture.dir/src/main.cpp.s
 
+CMakeFiles/PacAvanture.dir/src/Game.cpp.o: CMakeFiles/PacAvanture.dir/flags.make
+CMakeFiles/PacAvanture.dir/src/Game.cpp.o: /Users/belluciwz/Desktop/PacAvanture/src/Game.cpp
+CMakeFiles/PacAvanture.dir/src/Game.cpp.o: CMakeFiles/PacAvanture.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PacAvanture.dir/src/Game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PacAvanture.dir/src/Game.cpp.o -MF CMakeFiles/PacAvanture.dir/src/Game.cpp.o.d -o CMakeFiles/PacAvanture.dir/src/Game.cpp.o -c /Users/belluciwz/Desktop/PacAvanture/src/Game.cpp
+
+CMakeFiles/PacAvanture.dir/src/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PacAvanture.dir/src/Game.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/belluciwz/Desktop/PacAvanture/src/Game.cpp > CMakeFiles/PacAvanture.dir/src/Game.cpp.i
+
+CMakeFiles/PacAvanture.dir/src/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PacAvanture.dir/src/Game.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/belluciwz/Desktop/PacAvanture/src/Game.cpp -o CMakeFiles/PacAvanture.dir/src/Game.cpp.s
+
 CMakeFiles/PacAvanture.dir/src/Map.cpp.o: CMakeFiles/PacAvanture.dir/flags.make
 CMakeFiles/PacAvanture.dir/src/Map.cpp.o: /Users/belluciwz/Desktop/PacAvanture/src/Map.cpp
 CMakeFiles/PacAvanture.dir/src/Map.cpp.o: CMakeFiles/PacAvanture.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PacAvanture.dir/src/Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PacAvanture.dir/src/Map.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PacAvanture.dir/src/Map.cpp.o -MF CMakeFiles/PacAvanture.dir/src/Map.cpp.o.d -o CMakeFiles/PacAvanture.dir/src/Map.cpp.o -c /Users/belluciwz/Desktop/PacAvanture/src/Map.cpp
 
 CMakeFiles/PacAvanture.dir/src/Map.cpp.i: cmake_force
@@ -100,10 +114,24 @@ CMakeFiles/PacAvanture.dir/src/Map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PacAvanture.dir/src/Map.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/belluciwz/Desktop/PacAvanture/src/Map.cpp -o CMakeFiles/PacAvanture.dir/src/Map.cpp.s
 
+CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o: CMakeFiles/PacAvanture.dir/flags.make
+CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o: /Users/belluciwz/Desktop/PacAvanture/src/Enemy.cpp
+CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o: CMakeFiles/PacAvanture.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o -MF CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o.d -o CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o -c /Users/belluciwz/Desktop/PacAvanture/src/Enemy.cpp
+
+CMakeFiles/PacAvanture.dir/src/Enemy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PacAvanture.dir/src/Enemy.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/belluciwz/Desktop/PacAvanture/src/Enemy.cpp > CMakeFiles/PacAvanture.dir/src/Enemy.cpp.i
+
+CMakeFiles/PacAvanture.dir/src/Enemy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PacAvanture.dir/src/Enemy.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/belluciwz/Desktop/PacAvanture/src/Enemy.cpp -o CMakeFiles/PacAvanture.dir/src/Enemy.cpp.s
+
 CMakeFiles/PacAvanture.dir/src/Player.cpp.o: CMakeFiles/PacAvanture.dir/flags.make
 CMakeFiles/PacAvanture.dir/src/Player.cpp.o: /Users/belluciwz/Desktop/PacAvanture/src/Player.cpp
 CMakeFiles/PacAvanture.dir/src/Player.cpp.o: CMakeFiles/PacAvanture.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PacAvanture.dir/src/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PacAvanture.dir/src/Player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PacAvanture.dir/src/Player.cpp.o -MF CMakeFiles/PacAvanture.dir/src/Player.cpp.o.d -o CMakeFiles/PacAvanture.dir/src/Player.cpp.o -c /Users/belluciwz/Desktop/PacAvanture/src/Player.cpp
 
 CMakeFiles/PacAvanture.dir/src/Player.cpp.i: cmake_force
@@ -117,18 +145,22 @@ CMakeFiles/PacAvanture.dir/src/Player.cpp.s: cmake_force
 # Object files for target PacAvanture
 PacAvanture_OBJECTS = \
 "CMakeFiles/PacAvanture.dir/src/main.cpp.o" \
+"CMakeFiles/PacAvanture.dir/src/Game.cpp.o" \
 "CMakeFiles/PacAvanture.dir/src/Map.cpp.o" \
+"CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o" \
 "CMakeFiles/PacAvanture.dir/src/Player.cpp.o"
 
 # External object files for target PacAvanture
 PacAvanture_EXTERNAL_OBJECTS =
 
 PacAvanture: CMakeFiles/PacAvanture.dir/src/main.cpp.o
+PacAvanture: CMakeFiles/PacAvanture.dir/src/Game.cpp.o
 PacAvanture: CMakeFiles/PacAvanture.dir/src/Map.cpp.o
+PacAvanture: CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o
 PacAvanture: CMakeFiles/PacAvanture.dir/src/Player.cpp.o
 PacAvanture: CMakeFiles/PacAvanture.dir/build.make
 PacAvanture: CMakeFiles/PacAvanture.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable PacAvanture"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable PacAvanture"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PacAvanture.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

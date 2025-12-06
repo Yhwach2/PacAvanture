@@ -1,1 +1,1 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/PacAvanture.dir/src/main.cpp.o CMakeFiles/PacAvanture.dir/src/Map.cpp.o CMakeFiles/PacAvanture.dir/src/Player.cpp.o -o PacAvanture
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/PacAvanture.dir/src/main.cpp.o CMakeFiles/PacAvanture.dir/src/Game.cpp.o CMakeFiles/PacAvanture.dir/src/Map.cpp.o CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o CMakeFiles/PacAvanture.dir/src/Player.cpp.o -o PacAvanture

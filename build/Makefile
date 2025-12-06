@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /Users/belluciwz/Desktop/PacAvanture/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	/opt/homebrew/bin/ctest $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -139,18 +129,53 @@ PacAvanture/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/build
 .PHONY : PacAvanture/fast
 
-#=============================================================================
-# Target rules for targets named test_map
+src/Enemy.o: src/Enemy.cpp.o
+.PHONY : src/Enemy.o
 
-# Build rule for target.
-test_map: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_map
-.PHONY : test_map
+# target to build an object file
+src/Enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o
+.PHONY : src/Enemy.cpp.o
 
-# fast build rule for target.
-test_map/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/build
-.PHONY : test_map/fast
+src/Enemy.i: src/Enemy.cpp.i
+.PHONY : src/Enemy.i
+
+# target to preprocess a source file
+src/Enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Enemy.cpp.i
+.PHONY : src/Enemy.cpp.i
+
+src/Enemy.s: src/Enemy.cpp.s
+.PHONY : src/Enemy.s
+
+# target to generate assembly for a file
+src/Enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Enemy.cpp.s
+.PHONY : src/Enemy.cpp.s
+
+src/Game.o: src/Game.cpp.o
+.PHONY : src/Game.o
+
+# target to build an object file
+src/Game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Game.cpp.o
+.PHONY : src/Game.cpp.o
+
+src/Game.i: src/Game.cpp.i
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
 
 src/Map.o: src/Map.cpp.o
 .PHONY : src/Map.o
@@ -158,7 +183,6 @@ src/Map.o: src/Map.cpp.o
 # target to build an object file
 src/Map.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Map.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/src/Map.cpp.o
 .PHONY : src/Map.cpp.o
 
 src/Map.i: src/Map.cpp.i
@@ -167,7 +191,6 @@ src/Map.i: src/Map.cpp.i
 # target to preprocess a source file
 src/Map.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Map.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/src/Map.cpp.i
 .PHONY : src/Map.cpp.i
 
 src/Map.s: src/Map.cpp.s
@@ -176,7 +199,6 @@ src/Map.s: src/Map.cpp.s
 # target to generate assembly for a file
 src/Map.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Map.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/src/Map.cpp.s
 .PHONY : src/Map.cpp.s
 
 src/Player.o: src/Player.cpp.o
@@ -185,7 +207,6 @@ src/Player.o: src/Player.cpp.o
 # target to build an object file
 src/Player.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Player.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/src/Player.cpp.o
 .PHONY : src/Player.cpp.o
 
 src/Player.i: src/Player.cpp.i
@@ -194,7 +215,6 @@ src/Player.i: src/Player.cpp.i
 # target to preprocess a source file
 src/Player.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Player.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/src/Player.cpp.i
 .PHONY : src/Player.cpp.i
 
 src/Player.s: src/Player.cpp.s
@@ -203,7 +223,6 @@ src/Player.s: src/Player.cpp.s
 # target to generate assembly for a file
 src/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/Player.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -230,30 +249,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-tests/test_map.o: tests/test_map.cpp.o
-.PHONY : tests/test_map.o
-
-# target to build an object file
-tests/test_map.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/tests/test_map.cpp.o
-.PHONY : tests/test_map.cpp.o
-
-tests/test_map.i: tests/test_map.cpp.i
-.PHONY : tests/test_map.i
-
-# target to preprocess a source file
-tests/test_map.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/tests/test_map.cpp.i
-.PHONY : tests/test_map.cpp.i
-
-tests/test_map.s: tests/test_map.cpp.s
-.PHONY : tests/test_map.s
-
-# target to generate assembly for a file
-tests/test_map.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/tests/test_map.cpp.s
-.PHONY : tests/test_map.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -262,9 +257,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... PacAvanture"
-	@echo "... test_map"
+	@echo "... src/Enemy.o"
+	@echo "... src/Enemy.i"
+	@echo "... src/Enemy.s"
+	@echo "... src/Game.o"
+	@echo "... src/Game.i"
+	@echo "... src/Game.s"
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
@@ -274,9 +273,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... tests/test_map.o"
-	@echo "... tests/test_map.i"
-	@echo "... tests/test_map.s"
 .PHONY : help
 
 

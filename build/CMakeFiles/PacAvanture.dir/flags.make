@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/belluciwz/Desktop/PacAvanture/include
+CXX_INCLUDES = 
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
 

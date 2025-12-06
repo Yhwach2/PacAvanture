@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o"
+  "CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o.d"
+  "CMakeFiles/PacAvanture.dir/src/Game.cpp.o"
+  "CMakeFiles/PacAvanture.dir/src/Game.cpp.o.d"
   "CMakeFiles/PacAvanture.dir/src/Map.cpp.o"
   "CMakeFiles/PacAvanture.dir/src/Map.cpp.o.d"
   "CMakeFiles/PacAvanture.dir/src/Player.cpp.o"

@@ -5,8 +5,8 @@
 #include <utility>
 
 /**
- * InputHandler reads keyboard input and translates to movement deltas.
- * Implementation may use platform-specific code (conio.h / termios).
+
+ * Implementations wil be used by code (conio.h / termios).
  */
 class InputHandler {
 public:
@@ -16,7 +16,7 @@ public:
     // Arrow keys map to (0,-1),(0,1),(-1,0),(1,0) or (0,0) for none.
     std::pair<int,int> getMovementDelta() const;
 
-    // Non-blocking optional variant can be added later
+    // Non blocking optional variant can be added later
 };
 
 #endif //PACAVANTURE_INPUTHANDLER_H

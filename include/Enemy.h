@@ -4,24 +4,23 @@
 #include <utility>
 #include <vector>
 
-/**
- * Enemy moves in a fixed patrol pattern (sequence of dx,dy steps repeated).
- */
 class Enemy {
 public:
     Enemy();
-    Enemy(int startX, int startY, const std::vector<std::pair<int,int>>& pattern);
+    Enemy(int startX, int startY);
 
-    void update(); // advance one step in the patrol pattern
-    std::pair<int,int> getPosition() const;
+    void update();  // Move the enemy
+    std::pair<int, int> getPosition() const;
     void setPosition(int x, int y);
-    bool isAt(int x, int y) const;
+
+    bool isAlive() const;
+    void kill();  // For when player has insta-kill power
 
 private:
-    int x;
-    int y;
-    std::vector<std::pair<int,int>> pattern;
-    size_t patternIndex;
+    int x, y;
+    bool alive;
+    int moveCounter;
+    int moveDirection;  // 0=up, 1=right, 2=down, 3=left
 };
 
-#endif //PACAVANTURE_ENEMY_H
+#endif
