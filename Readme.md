@@ -1,38 +1,31 @@
-## Current Status (Checkpoint 2)
+## Checkpoint 3: Save/Load System and Levels
 
-### Implemented Features
-- **Complete Map System**: 20x12 grid with walls, random coins, power-ups, and gate
-- **Player System**: Movement, scoring, and power-up collection (speed, insta-kill, ghost)
-- **Enemy System**: 3 enemies with random patrol patterns
-- **Power-up System**: Temporary abilities that change gameplay
-- **Game Loop**: Full continuous gameplay with win/lose conditions
-- **Automated Testing**: 6 total tests (3 from checkpoint 1, 3 new)
+### New Features Added
+- 3 levels with increasing difficulty
+- Save system (saves to pacsave.txt)
+- Load system to continue games
+- 3 lives total for the whole game
 
-###  How to Play
-1. Build: `mkdir build && cd build && cmake .. && make`
-2. Run: `./PacAvanture`
-3. Controls: WASD or arrow keys to move, Q to quit
-4. Goal: Collect all coins while avoiding enemies
-5. Power-ups:
-    - **S** = Speed boost (5 sec)
-    - **K** = Insta-kill (10 sec) - destroy enemies!
-    - **G** = Ghost mode (4 sec) - walk through walls!
+### How to Use
+1. Save during game: Press 'S' key
+2. Load saved game: Choose option 2 from main menu
+3. File location: pacsave.txt in game folder
 
-###  Planned Features (maybe in future)
-1. Different enemy types (fast, smart, etc.)
-2. Multiple levels with increasing difficulty
-3. Sound effects and better visuals
-4. High score tracking
-5. Power-up combinations
+### Project Progress
+Checkpoint 1: Done
+Checkpoint 2: Done  
+Checkpoint 3: Done
+Checkpoint 4: Remaining
 
-###  Known Issues
-- Input might be laggy on some systems
-- No level progression yet (one maze only)
-- Simple enemy AI (random moves)
-- Screen flickers during redraw
+Overall: 75% complete (6/8 features done)
 
-###  Running Tests
+### Current Issues
+- Save file doesn't save power-up timers
+- No error if save file is missing
+- Level 3 might be too hard
+- Ghost mode looks weird
+
+### Running Tests
 ```bash
 cd build
 ctest --verbose
-# Runs both MapTests and PowerUpTests

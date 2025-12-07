@@ -17,4 +17,9 @@ add_executable(PacAvanture
         include/Player.h
         include/Enemy.h
         include/InputHandler.h
+        include/fileHandler.h
+        src/FileHandler.cpp
+        tests/test_save.cpp
 )
+add_executable(test_save tests/test_save.cpp)
+add_test(NAME SaveTests COMMAND test_save)
