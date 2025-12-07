@@ -6,13 +6,14 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Map.h"
+#include "FileHandler.h"  // ADDED
 
 class Game {
 public:
     Game();
 
-    void run();  // Main game loop
-    void showMenu();  // New: Main menu
+    void run();
+    void showMenu();
 
 private:
     Map map;
@@ -26,7 +27,7 @@ private:
 
     int currentLevel;
     int totalLevels;
-    int playerLives;  // New: Lives system
+    int playerLives;
 
     void processInput();
     void update();
@@ -35,17 +36,16 @@ private:
     void checkCollisions();
     void spawnEnemies();
 
-    // New level methods
     void loadLevel(int level);
     void nextLevel();
     void resetGame();
-
-    // New save/load (stub for now)
-    bool saveGame(const std::string& filename);
-    bool loadGame(const std::string& filename);
-
-    // Helper
     void clearScreen();
+
+    // Save/load using FileHandler
+    void showSaveMenu();
+    void showLoadMenu();
+    bool saveCurrentGame();
+    bool loadSavedGame();
 };
 
 #endif
