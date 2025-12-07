@@ -3,7 +3,6 @@
 #include <ctime>
 
 Enemy::Enemy() : x(0), y(0), alive(true), moveCounter(0), moveDirection(0) {
-    // Random direction at start
     moveDirection = rand() % 4;
 }
 
@@ -32,17 +31,15 @@ void Enemy::update() {
     if (!alive) return;
 
     moveCounter++;
-    if (moveCounter < 3) return;  // Move every 3 ticks
+    if (moveCounter < 3) return;
 
     moveCounter = 0;
 
-    // Simple random-ish movement
-    // Sometimes change direction
-    if (rand() % 5 == 0) {
+    // 25% chance to change direction
+    if (rand() % 4 == 0) {
         moveDirection = rand() % 4;
     }
 
-    // Store old position in case we hit wall
     int oldX = x, oldY = y;
 
     switch (moveDirection) {
@@ -52,11 +49,11 @@ void Enemy::update() {
         case 3: x--; break; // left
     }
 
-    // For now, just bounce if at edge
-    // In real game, Map would tell us if wall
-    if (x < 1 || x > 18 || y < 1 || y > 10) {
+    // Simple boundary check - in real game would use Map::isWall
+    // Using approximate bounds
+    if (x < 1 || y < 1) {
         x = oldX;
         y = oldY;
-        moveDirection = (moveDirection + 2) % 4;  // Reverse direction
+        moveDirection = (moveDirection + 2) % 4;
     }
 }

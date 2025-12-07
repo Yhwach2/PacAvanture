@@ -1,3 +1,7 @@
-/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles/PacAvanture.dir
-/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles/edit_cache.dir
-/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles/rebuild_cache.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/PacAvanture.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/test_map.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/test_powerups.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/test_final.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/test.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/edit_cache.dir
+/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles/rebuild_cache.dir

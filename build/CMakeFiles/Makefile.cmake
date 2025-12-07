@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/Users/belluciwz/Desktop/PacAvanture/CMakeLists.txt"
+  "/Users/belluciwz/Desktop/PacAvanture_old/CMakeLists.txt"
   "CMakeFiles/4.1.2/CMakeCCompiler.cmake"
   "CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.1.2/CMakeSystem.cmake"
@@ -145,4 +145,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/PacAvanture.dir/DependInfo.cmake"
+  "CMakeFiles/test_map.dir/DependInfo.cmake"
+  "CMakeFiles/test_powerups.dir/DependInfo.cmake"
+  "CMakeFiles/test_final.dir/DependInfo.cmake"
   )

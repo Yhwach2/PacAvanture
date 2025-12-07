@@ -4,22 +4,24 @@ project(PacAvanture)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(include)
 
 add_executable(PacAvanture
         src/main.cpp
-        src/Game.cpp
         src/Map.cpp
-        src/Enemy.cpp
         src/Player.cpp
-        include/Game.h
-        include/Map.h
-        include/Player.h
-        include/Enemy.h
-        include/InputHandler.h
-        include/fileHandler.h
+        src/Enemy.cpp
+        src/Game.cpp
         src/FileHandler.cpp
-        tests/test_save.cpp
 )
-add_executable(test_save tests/test_save.cpp)
-add_test(NAME SaveTests COMMAND test_save)
+
+enable_testing()
+
+add_executable(test_map tests/test_map.cpp src/Map.cpp src/Player.cpp)
+add_test(NAME MapTests COMMAND test_map)
+
+add_executable(test_powerups tests/test_powerups.cpp src/Player.cpp src/Enemy.cpp)
+add_test(NAME PowerUpTests COMMAND test_powerups)
+
+add_executable(test_final tests/test_final.cpp src/Map.cpp src/Player.cpp src/FileHandler.cpp)
+add_test(NAME FinalTests COMMAND test_final)

@@ -8,11 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/belluciwz/Desktop/PacAvanture/src/Enemy.cpp" "CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o.d"
-  "/Users/belluciwz/Desktop/PacAvanture/src/Game.cpp" "CMakeFiles/PacAvanture.dir/src/Game.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Game.cpp.o.d"
-  "/Users/belluciwz/Desktop/PacAvanture/src/Map.cpp" "CMakeFiles/PacAvanture.dir/src/Map.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Map.cpp.o.d"
-  "/Users/belluciwz/Desktop/PacAvanture/src/Player.cpp" "CMakeFiles/PacAvanture.dir/src/Player.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Player.cpp.o.d"
-  "/Users/belluciwz/Desktop/PacAvanture/src/main.cpp" "CMakeFiles/PacAvanture.dir/src/main.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/main.cpp.o.d"
+  "/Users/belluciwz/Desktop/PacAvanture_old/src/Enemy.cpp" "CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Enemy.cpp.o.d"
+  "/Users/belluciwz/Desktop/PacAvanture_old/src/FileHandler.cpp" "CMakeFiles/PacAvanture.dir/src/FileHandler.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/FileHandler.cpp.o.d"
+  "/Users/belluciwz/Desktop/PacAvanture_old/src/Game.cpp" "CMakeFiles/PacAvanture.dir/src/Game.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Game.cpp.o.d"
+  "/Users/belluciwz/Desktop/PacAvanture_old/src/Map.cpp" "CMakeFiles/PacAvanture.dir/src/Map.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Map.cpp.o.d"
+  "/Users/belluciwz/Desktop/PacAvanture_old/src/Player.cpp" "CMakeFiles/PacAvanture.dir/src/Player.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/Player.cpp.o.d"
+  "/Users/belluciwz/Desktop/PacAvanture_old/src/main.cpp" "CMakeFiles/PacAvanture.dir/src/main.cpp.o" "gcc" "CMakeFiles/PacAvanture.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

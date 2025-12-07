@@ -51,29 +51,3 @@ int main() {
     std::cout << "All map tests passed!\n";
     return 0;
 }
-/*
-*belluciwz@Bellucis-MacBook-Pro build % ctest --verbose
-UpdateCTestConfiguration  from :/Users/belluciwz/Desktop/PacAvanture/build/DartConfiguration.tcl
-Test project /Users/belluciwz/Desktop/PacAvanture/build
-Constructing a list of tests
-Done constructing a list of tests
-Updating test list for fixtures
-Added 0 tests to meet fixture requirements
-Checking test dependency graph...
-Checking test dependency graph end
-test 1
-    Start 1: MapTests
-
-1: Test command: /Users/belluciwz/Desktop/PacAvanture/build/test_map
-1: Working Directory: /Users/belluciwz/Desktop/PacAvanture/build
-1: Test timeout computed to be: 10000000
-1: ✓ initial state
-1: ✓ initialize
-1: ✓ coin logic
-1: All map tests passed!
-1/1 Test #1: MapTests .........................   Passed    1.55 sec
-
-100% tests passed, 0 tests failed out of 1
-
-Total Test time (real) =   1.55 sec
- */

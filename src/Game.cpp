@@ -4,6 +4,7 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include <limits>
 
 #ifdef _WIN32
 #include <conio.h>
@@ -13,16 +14,18 @@
 #include <termios.h>
 #endif
 
-Game::Game() : gameRunning(false), gameWon(false), gameOver(false),
-               inMenu(true), currentLevel(1), totalLevels(3), playerLives(3) {
+Game::Game() : gameRunning(true), gameWon(false), gameOver(false),
+               currentLevel(1), totalLevels(3), playerLives(3) {
     srand(time(0));
 }
 
-void Game::showMenu() {
-    inMenu = true;
-    while (inMenu) {
-        clearScreen();
+void Game::run() {
+    showMainMenu();
+}
 
+void Game::showMainMenu() {
+    while (true) {
+        clearScreen();
         std::cout << "=== PACAVANTURE ===\n\n";
         std::cout << "1. New Game\n";
         std::cout << "2. Load Game\n";
@@ -32,127 +35,115 @@ void Game::showMenu() {
 
         char choice;
         std::cin >> choice;
+        std::cin.ignore();
 
         switch (choice) {
             case '1':
-                resetGame();
-                loadLevel(1);
-                inMenu = false;
-                gameRunning = true;
-                break;
+                startNewGame();
+                return;
             case '2':
-                showLoadMenu();
+                if (loadSavedGame()) {
+                    playGame();
+                    return;
+                }
                 break;
             case '3':
-                clearScreen();
-                std::cout << "=== HOW TO PLAY ===\n\n";
-                std::cout << "Controls: WASD or Arrow Keys\n";
-                std::cout << "Save Game: Press 'S' during play\n";
-                std::cout << "Goal: Collect coins, avoid enemies\n";
-                std::cout << "Power-ups: S=Speed, K=Kill, G=Ghost\n";
-                std::cout << "Lives: " << playerLives << " | Levels: " << totalLevels << "\n";
-                std::cout << "\nPress any key...";
-                #ifdef _WIN32
-                _getch();
-                #else
-                system("read -n 1");
-                #endif
+                showInstructions();
                 break;
             case '4':
-                inMenu = false;
-                gameRunning = false;
+                return;
+            default:
+                std::cout << "Invalid choice!\n";
+                std::this_thread::sleep_for(std::chrono::seconds(1));
                 break;
         }
     }
 }
 
-void Game::showSaveMenu() {
+void Game::showInstructions() {
     clearScreen();
-    std::cout << "=== SAVE GAME ===\n\n";
-
-    if (saveCurrentGame()) {
-        std::cout << "Game saved to pacsave.dat\n";
-    } else {
-        std::cout << "Save failed!\n";
-    }
-
-    std::cout << "\nPress any key to continue...";
-    #ifdef _WIN32
-    _getch();
-    #else
-    system("read -n 1");
-    #endif
+    std::cout << "=== HOW TO PLAY ===\n\n";
+    std::cout << "WASD: Move\n";
+    std::cout << "P: Save game\n";
+    std::cout << "Q: Quit to menu\n";
+    std::cout << "\nGoal: Collect all coins (o)\n";
+    std::cout << "Avoid enemies (E) or kill them with K power-up\n";
+    std::cout << "Power-ups: S=Speed, K=Kill, G=Ghost\n";
+    std::cout << "Reach the open gate (g) after collecting all coins\n";
+    std::cout << "\nPress Enter to continue...";
+    std::cin.ignore();
+    std::cin.get();
 }
 
-void Game::showLoadMenu() {
-    clearScreen();
-    std::cout << "=== LOAD GAME ===\n\n";
-
-    if (loadSavedGame()) {
-        std::cout << "Game loaded! Starting level " << currentLevel << "\n";
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-        inMenu = false;
-        gameRunning = true;
-    } else {
-        std::cout << "No save file found!\n";
-        std::cout << "\nPress any key to continue...";
-        #ifdef _WIN32
-        _getch();
-        #else
-        system("read -n 1");
-        #endif
-    }
+void Game::startNewGame() {
+    resetGame();
+    loadLevel(1);
+    playGame();
 }
 
-bool Game::saveCurrentGame() {
-    return FileHandler::saveGame(currentLevel, player.getScore(), playerLives, map.remainingCoins());
+void Game::playGame() {
+    gameRunning = true;
+    gameWon = false;
+    gameOver = false;
+
+    while (gameRunning) {
+        processInput();
+        update();
+        render();
+        checkCollisions();
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        clearScreen();
+    }
+
+    // Game ended, show result
+    clearScreen();
+    if (gameWon) {
+        std::cout << "\n🎉 YOU WIN! 🎉\n";
+        std::cout << "Final Score: " << player.getScore() << "\n";
+    } else if (gameOver) {
+        std::cout << "\n💀 GAME OVER! 💀\n";
+        std::cout << "Final Score: " << player.getScore() << "\n";
+    }
+
+    std::cout << "\nPress Enter to return to menu...";
+    std::cin.ignore();
+    std::cin.get();
 }
 
 bool Game::loadSavedGame() {
-    int savedLevel, savedScore, savedLives, savedCoins;
+    clearScreen();
+    std::cout << "Loading game...\n";
 
+    int savedLevel, savedScore, savedLives, savedCoins;
     if (FileHandler::loadGame(savedLevel, savedScore, savedLives, savedCoins)) {
         currentLevel = savedLevel;
         playerLives = savedLives;
         player.addScore(savedScore);
-
-        // Load the level
         loadLevel(currentLevel);
+        std::cout << "Game loaded! Level " << currentLevel << "\n";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         return true;
+    } else {
+        std::cout << "No save file found!\n";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        return false;
     }
-    return false;
 }
 
 void Game::loadLevel(int level) {
     currentLevel = level;
-
     int width = 20 + (level - 1) * 2;
     int height = 12 + (level - 1);
 
     map = Map(width, height);
-    map.initialize();
-
+    map.loadLevelDesign(level);
     player.setPosition(1, 1);
 
     enemies.clear();
     int enemyCount = 2 + level;
-
     for (int i = 0; i < enemyCount; i++) {
-        int ex = 5 + rand() % (width - 10);
-        int ey = 3 + rand() % (height - 6);
-        enemies.push_back(Enemy(ex, ey));
-    }
-}
-
-void Game::nextLevel() {
-    if (currentLevel < totalLevels) {
-        currentLevel++;
-        player.addScore(100);
-        loadLevel(currentLevel);
-    } else {
-        gameWon = true;
-        gameRunning = false;
-        player.addScore(500);
+        enemies.push_back(Enemy(5 + rand() % (width - 10), 3 + rand() % (height - 6)));
     }
 }
 
@@ -170,26 +161,6 @@ void Game::clearScreen() {
 #else
     system("clear");
 #endif
-}
-
-void Game::run() {
-    if (inMenu) showMenu();
-
-    while (gameRunning) {
-        processInput();
-        update();
-        render();
-        checkCollisions();
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        clearScreen();
-    }
-
-    if (gameWon) {
-        std::cout << "\n🎉 YOU WIN! Score: " << player.getScore() << " 🎉\n";
-    } else if (gameOver) {
-        std::cout << "\n💀 GAME OVER! Score: " << player.getScore() << " 💀\n";
-    }
 }
 
 void Game::processInput() {
@@ -211,7 +182,7 @@ void Game::processInput() {
                 case 'a': case 'A': player.moveDelta(-1, 0, map.getWidth(), map.getHeight()); break;
                 case 'd': case 'D': player.moveDelta(1, 0, map.getWidth(), map.getHeight()); break;
                 case 'q': case 'Q': gameRunning = false; break;
-                case 's': case 'S': showSaveMenu(); break;
+                case 'p': case 'P': saveGame(); break;
             }
         }
     }
@@ -223,18 +194,30 @@ void Game::processInput() {
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
     char ch = 0;
-    if (read(STDIN_FILENO, &ch, 1) > 0) {
+    int bytes = read(STDIN_FILENO, &ch, 1);
+
+    if (bytes > 0) {
         switch (ch) {
             case 'w': case 'W': player.moveDelta(0, -1, map.getWidth(), map.getHeight()); break;
             case 's': case 'S': player.moveDelta(0, 1, map.getWidth(), map.getHeight()); break;
             case 'a': case 'A': player.moveDelta(-1, 0, map.getWidth(), map.getHeight()); break;
             case 'd': case 'D': player.moveDelta(1, 0, map.getWidth(), map.getHeight()); break;
             case 'q': case 'Q': gameRunning = false; break;
-            case 's': case 'S': showSaveMenu(); break;
+            case 'p': case 'P': saveGame(); break;
         }
     }
+
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 #endif
+}
+
+void Game::saveGame() {
+    if (FileHandler::saveGame(currentLevel, player.getScore(), playerLives, map.remainingCoins())) {
+        std::cout << "\nGame saved!\n";
+    } else {
+        std::cout << "\nSave failed!\n";
+    }
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 void Game::update() {
@@ -251,24 +234,32 @@ void Game::update() {
     if (!map.gateLocked() &&
         player.getX() == map.getWidth() - 2 &&
         player.getY() == map.getHeight() / 2) {
-        nextLevel();
+        if (currentLevel < totalLevels) {
+            currentLevel++;
+            player.addScore(100);
+            std::cout << "\nLevel complete! Next level...\n";
+            std::this_thread::sleep_for(std::chrono::seconds(2));
+            loadLevel(currentLevel);
+        } else {
+            gameWon = true;
+            gameRunning = false;
+        }
     }
 }
 
 void Game::render() {
     map.draw(player);
 
-    std::cout << "Level: " << currentLevel << " | ";
-    std::cout << "Lives: " << playerLives << " | ";
-    std::cout << "Score: " << player.getScore() << "\n";
-    std::cout << "Coins: " << map.remainingCoins() << " | ";
-    std::cout << "Enemies: " << enemies.size() << "\n";
+    std::cout << "\nLevel: " << currentLevel << "/" << totalLevels;
+    std::cout << " | Lives: " << playerLives;
+    std::cout << " | Score: " << player.getScore();
+    std::cout << " | Coins: " << map.remainingCoins() << "\n";
 
-    if (player.hasPowerUp(Player::SPEED_BOOST)) std::cout << "SPEED ";
-    if (player.hasPowerUp(Player::INSTA_KILL)) std::cout << "KILL ";
-    if (player.hasPowerUp(Player::GHOST_MODE)) std::cout << "GHOST ";
+    if (player.hasPowerUp(Player::SPEED_BOOST)) std::cout << "[SPEED] ";
+    if (player.hasPowerUp(Player::INSTA_KILL)) std::cout << "[KILL] ";
+    if (player.hasPowerUp(Player::GHOST_MODE)) std::cout << "[GHOST] ";
 
-    std::cout << "\nWASD=Move | Q=Quit | S=Save\n";
+    std::cout << "\nWASD=Move | Q=Quit | P=Save\n";
 }
 
 void Game::checkCollisions() {
@@ -292,8 +283,8 @@ void Game::checkCollisions() {
     for (auto& enemy : enemies) {
         if (!enemy.isAlive()) continue;
 
-        auto epos = enemy.getPosition();
-        if (epos.first == px && epos.second == py) {
+        auto pos = enemy.getPosition();
+        if (pos.first == px && pos.second == py) {
             if (player.canKillEnemies()) {
                 enemy.kill();
                 player.addScore(50);
@@ -303,14 +294,12 @@ void Game::checkCollisions() {
                     gameOver = true;
                     gameRunning = false;
                 } else {
+                    std::cout << "\nHit! Lives left: " << playerLives << "\n";
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
                     loadLevel(currentLevel);
                 }
                 return;
             }
         }
     }
-}
-
-void Game::spawnEnemies() {
-    // Handled in loadLevel
 }

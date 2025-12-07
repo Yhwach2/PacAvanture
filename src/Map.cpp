@@ -54,6 +54,90 @@ void Map::initialize() {
     }
 }
 
+void Map::loadLevelDesign(int level) {
+    // Reset grid
+    grid.clear();
+    grid.resize(height, std::string(width, '.'));
+
+    // Always have borders
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
+                grid[y][x] = '#';
+        }
+    }
+
+    // Level-specific designs
+    switch (level) {
+        case 1:  // Easy - open space
+            // Add some interior walls
+            for (int x = 5; x < 15; x++) {
+                grid[5][x] = '#';
+                grid[7][x] = '#';
+            }
+            break;
+
+        case 2:  // Medium - more maze-like
+            for (int x = 3; x < width - 3; x += 2) {
+                grid[3][x] = '#';
+                grid[height - 4][x] = '#';
+            }
+            // Vertical walls
+            for (int y = 2; y < height - 2; y++) {
+                grid[y][8] = '#';
+                grid[y][12] = '#';
+            }
+            break;
+
+        case 3:  // Hard - complex maze
+            // Create maze pattern
+            for (int y = 2; y < height - 2; y += 2) {
+                for (int x = 2; x < width - 2; x++) {
+                    grid[y][x] = '#';
+                }
+            }
+            // Open some paths
+            for (int y = 2; y < height - 2; y += 4) {
+                grid[y][5] = '.';
+                grid[y][10] = '.';
+                grid[y][15] = '.';
+            }
+            break;
+    }
+
+    // Add coins (fewer in harder levels)
+    coinCount = 0;
+    int coinsToAdd = 15 - (level * 3);  // Level 1: 12 coins, Level 2: 9, Level 3: 6
+
+    for (int i = 0; i < coinsToAdd; i++) {
+        int x = 1 + rand() % (width - 2);
+        int y = 1 + rand() % (height - 2);
+
+        if (grid[y][x] == '.') {
+            grid[y][x] = 'o';
+            coinCount++;
+        }
+    }
+
+    // Gate location (always right side middle)
+    gateX = width - 2;
+    gateY = height / 2;
+    if (gateX < width && gateY < height) {
+        grid[gateY][gateX] = 'G';
+    }
+    gate_is_locked = true;
+
+    // Clear power-ups for fresh level
+    powerUpPositions.clear();
+    powerUpTypes.clear();
+
+    // Add initial power-ups (fewer in higher levels)
+    int powerUps = 4 - level;  // Level 1: 3, Level 2: 2, Level 3: 1
+    for (int i = 0; i < powerUps; i++) {
+        spawnPowerUp();
+    }
+}
+
 void Map::placePlayer(Player &player) {
     player.setPosition(1, 1);
 }
@@ -69,7 +153,7 @@ bool Map::isWall(int x, int y) const {
 
 bool Map::isValidMove(int x, int y) const {
     if (!isInside(x, y)) return false;
-    return grid[y][x] != '#';  // Can move on anything but walls
+    return grid[y][x] != '#';
 }
 
 void Map::draw(const Player &player) const {
@@ -81,7 +165,7 @@ void Map::draw(const Player &player) const {
         int px = powerUpPositions[i].first;
         int py = powerUpPositions[i].second;
         if (isInside(px, py)) {
-            display[py][px] = powerUpTypes[i];
+            display[py][px] = powerUpTypes[i]; // S, K, or G
         }
     }
 
@@ -94,26 +178,40 @@ void Map::draw(const Player &player) const {
 
     // Draw gate (open/closed)
     if (isInside(gateX, gateY)) {
-        display[gateY][gateX] = gate_is_locked ? 'G' : 'g';
+        display[gateY][gateX] = gate_is_locked ? 'D' : ' ';
     }
 
-    // Actually print
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            std::cout << display[y][x];
-        }
-        std::cout << "\n";
-    }
-
-    // Show player status
-    std::cout << "Score: " << player.getScore() << " | Coins left: " << coinCount;
-    if (player.hasPowerUp(Player::SPEED_BOOST))
-        std::cout << " | SPEED: " << player.getPowerUpTimer(Player::SPEED_BOOST)/30 << "s";
-    if (player.hasPowerUp(Player::INSTA_KILL))
-        std::cout << " | KILL: " << player.getPowerUpTimer(Player::INSTA_KILL)/30 << "s";
-    if (player.hasPowerUp(Player::GHOST_MODE))
-        std::cout << " | GHOST: " << player.getPowerUpTimer(Player::GHOST_MODE)/30 << "s";
+    // Clear screen and draw with box border
     std::cout << "\n";
+    std::cout << "+";
+    for (int x = 0; x < width; x++) std::cout << "--";
+    std::cout << "+\n";
+
+    for (int y = 0; y < height; y++) {
+        std::cout << "|";
+        for (int x = 0; x < width; x++) {
+            char c = display[y][x];
+            if (c == '#') std::cout << "##";      // Wall
+            else if (c == 'o') std::cout << " *"; // Coin
+            else if (c == 'P') std::cout << " P"; // Player (you)
+            else if (c == 'S') std::cout << " S"; // Speed power-up
+            else if (c == 'K') std::cout << " K"; // Kill power-up
+            else if (c == 'G') std::cout << " G"; // Ghost power-up
+            else if (c == 'D') std::cout << " D"; // Door (locked)
+            else std::cout << "  ";               // Empty space
+        }
+        std::cout << "|\n";
+    }
+
+    std::cout << "+";
+    for (int x = 0; x < width; x++) std::cout << "--";
+    std::cout << "+\n";
+
+    // Legend
+    std::cout << "\nLEGEND:  P = You   * = Coin   D = Door\n";
+    std::cout << "        S = Speed  K = Kill   G = Ghost\n";
+    std::cout << "----------------------------------------\n";
+    std::cout << "Score: " << player.getScore() << "  |  Coins left: " << coinCount << "\n";
 }
 
 bool Map::hasCoinAt(int x, int y) const {

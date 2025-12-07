@@ -2,18 +2,15 @@
 #define PACAVANTURE_GAME_H
 
 #include <vector>
-#include <string>
 #include "Player.h"
 #include "Enemy.h"
 #include "Map.h"
-#include "FileHandler.h"  // ADDED
+#include "FileHandler.h"
 
 class Game {
 public:
     Game();
-
-    void run();
-    void showMenu();
+    void run();  // Main entry point
 
 private:
     Map map;
@@ -23,29 +20,26 @@ private:
     bool gameRunning;
     bool gameWon;
     bool gameOver;
-    bool inMenu;
 
     int currentLevel;
     int totalLevels;
     int playerLives;
 
-    void processInput();
-    void update();
-    void render();
-    void renderMenu();
-    void checkCollisions();
-    void spawnEnemies();
+    void showMainMenu();
+    void showInstructions();
+    void startNewGame();
+    void playGame();
+    bool loadSavedGame();
+    void saveGame();
 
     void loadLevel(int level);
-    void nextLevel();
     void resetGame();
     void clearScreen();
 
-    // Save/load using FileHandler
-    void showSaveMenu();
-    void showLoadMenu();
-    bool saveCurrentGame();
-    bool loadSavedGame();
+    void processInput();
+    void update();
+    void render();
+    void checkCollisions();
 };
 
 #endif

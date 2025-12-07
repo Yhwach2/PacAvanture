@@ -2,6 +2,6 @@
 
 int main() {
     Game game;
-    game.showMenu();  // Start with menu instead of immediate game
+    game.run();
     return 0;
 }

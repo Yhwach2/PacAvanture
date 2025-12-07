@@ -54,20 +54,26 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/belluciwz/Desktop/PacAvanture
+CMAKE_SOURCE_DIR = /Users/belluciwz/Desktop/PacAvanture_old
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/belluciwz/Desktop/PacAvanture/build
+CMAKE_BINARY_DIR = /Users/belluciwz/Desktop/PacAvanture_old/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
 all: CMakeFiles/PacAvanture.dir/all
+all: CMakeFiles/test_map.dir/all
+all: CMakeFiles/test_powerups.dir/all
+all: CMakeFiles/test_final.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/PacAvanture.dir/codegen
+codegen: CMakeFiles/test_map.dir/codegen
+codegen: CMakeFiles/test_powerups.dir/codegen
+codegen: CMakeFiles/test_final.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -76,6 +82,9 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/PacAvanture.dir/clean
+clean: CMakeFiles/test_map.dir/clean
+clean: CMakeFiles/test_powerups.dir/clean
+clean: CMakeFiles/test_final.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -85,14 +94,14 @@ clean: CMakeFiles/PacAvanture.dir/clean
 CMakeFiles/PacAvanture.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target PacAvanture"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target PacAvanture"
 .PHONY : CMakeFiles/PacAvanture.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/PacAvanture.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/PacAvanture.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 0
 .PHONY : CMakeFiles/PacAvanture.dir/rule
 
 # Convenience name for target.
@@ -102,13 +111,109 @@ PacAvanture: CMakeFiles/PacAvanture.dir/rule
 # codegen rule for target.
 CMakeFiles/PacAvanture.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target PacAvanture"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target PacAvanture"
 .PHONY : CMakeFiles/PacAvanture.dir/codegen
 
 # clean rule for target.
 CMakeFiles/PacAvanture.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PacAvanture.dir/build.make CMakeFiles/PacAvanture.dir/clean
 .PHONY : CMakeFiles/PacAvanture.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_map.dir
+
+# All Build rule for target.
+CMakeFiles/test_map.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=13,14,15,16 "Built target test_map"
+.PHONY : CMakeFiles/test_map.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_map.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_map.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_map.dir/rule
+
+# Convenience name for target.
+test_map: CMakeFiles/test_map.dir/rule
+.PHONY : test_map
+
+# codegen rule for target.
+CMakeFiles/test_map.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=13,14,15,16 "Finished codegen for target test_map"
+.PHONY : CMakeFiles/test_map.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_map.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_map.dir/build.make CMakeFiles/test_map.dir/clean
+.PHONY : CMakeFiles/test_map.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_powerups.dir
+
+# All Build rule for target.
+CMakeFiles/test_powerups.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_powerups.dir/build.make CMakeFiles/test_powerups.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_powerups.dir/build.make CMakeFiles/test_powerups.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=17,18,19,20 "Built target test_powerups"
+.PHONY : CMakeFiles/test_powerups.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_powerups.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_powerups.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_powerups.dir/rule
+
+# Convenience name for target.
+test_powerups: CMakeFiles/test_powerups.dir/rule
+.PHONY : test_powerups
+
+# codegen rule for target.
+CMakeFiles/test_powerups.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_powerups.dir/build.make CMakeFiles/test_powerups.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=17,18,19,20 "Finished codegen for target test_powerups"
+.PHONY : CMakeFiles/test_powerups.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_powerups.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_powerups.dir/build.make CMakeFiles/test_powerups.dir/clean
+.PHONY : CMakeFiles/test_powerups.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_final.dir
+
+# All Build rule for target.
+CMakeFiles/test_final.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_final.dir/build.make CMakeFiles/test_final.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_final.dir/build.make CMakeFiles/test_final.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=8,9,10,11,12 "Built target test_final"
+.PHONY : CMakeFiles/test_final.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_final.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_final.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_final.dir/rule
+
+# Convenience name for target.
+test_final: CMakeFiles/test_final.dir/rule
+.PHONY : test_final
+
+# codegen rule for target.
+CMakeFiles/test_final.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_final.dir/build.make CMakeFiles/test_final.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/belluciwz/Desktop/PacAvanture_old/build/CMakeFiles --progress-num=8,9,10,11,12 "Finished codegen for target test_final"
+.PHONY : CMakeFiles/test_final.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_final.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_final.dir/build.make CMakeFiles/test_final.dir/clean
+.PHONY : CMakeFiles/test_final.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
