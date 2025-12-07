@@ -1,5 +1,35 @@
+# Build files
 cmake-build-*/
 build/
 *.o
+*.a
+*.so
+*.dylib
+
+# Executables
 PacAvanture
-test_map
+test_*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+.DS_Store?
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.ninja
+.ninja_deps
+.ninja_log
+
+# Test files
+Testing/
+CTestTestfile.cmake

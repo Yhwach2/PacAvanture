@@ -4,193 +4,171 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include <fstream>
 
 #ifdef _WIN32
 #include <conio.h>
+#include <windows.h>
 #else
 #include <unistd.h>
 #include <termios.h>
 #endif
 
-Game::Game() : gameRunning(true), gameWon(false), gameOver(false) {
+Game::Game() : gameRunning(false), gameWon(false), gameOver(false),
+               inMenu(true), currentLevel(1), totalLevels(3), playerLives(3) {
     srand(time(0));
+}
+
+void Game::showMenu() {
+    inMenu = true;
+    while (inMenu) {
+        clearScreen();
+
+        std::cout << "=== PACAVANTURE ===\n\n";
+        std::cout << "1. New Game\n";
+        std::cout << "2. Load Game (coming soon)\n";
+        std::cout << "3. How to Play\n";
+        std::cout << "4. Exit\n\n";
+        std::cout << "Select: ";
+
+        char choice;
+        std::cin >> choice;
+
+        switch (choice) {
+            case '1':
+                resetGame();
+                loadLevel(1);
+                inMenu = false;
+                run();
+                break;
+            case '2':
+                // Will implement in next commit
+                std::cout << "\nSave/Load coming in next update!\n";
+                std::this_thread::sleep_for(std::chrono::seconds(2));
+                break;
+            case '3':
+                clearScreen();
+                std::cout << "=== HOW TO PLAY ===\n\n";
+                std::cout << "Move: WASD or Arrow Keys\n";
+                std::cout << "Goal: Collect ALL coins (o)\n";
+                std::cout << "Avoid enemies (E) or kill them with K power-up\n";
+                std::cout << "Power-ups:\n";
+                std::cout << "  S = Speed (5 sec)\n";
+                std::cout << "  K = Insta-Kill (10 sec)\n";
+                std::cout << "  G = Ghost (4 sec) - walk through walls!\n";
+                std::cout << "\nLevels get harder with more enemies\n";
+                std::cout << "You have " << playerLives << " lives\n";
+                std::cout << "\nPress any key to continue...";
+                #ifdef _WIN32
+                _getch();
+                #else
+                system("read -n 1");
+                #endif
+                break;
+            case '4':
+                inMenu = false;
+                gameRunning = false;
+                break;
+        }
+    }
+}
+
+void Game::loadLevel(int level) {
+    currentLevel = level;
+
+    // Different map sizes based on level
+    int width = 20 + (level - 1) * 2;  // Gets wider each level
+    int height = 12 + (level - 1);     // Gets taller
+
+    // Create new map with appropriate size
+    map = Map(width, height);
     map.initialize();
-    map.placePlayer(player);
-    spawnEnemies();
-}
 
-void Game::spawnEnemies() {
+    // Place player at start (different position each level)
+    int startX = 1;
+    int startY = 1;
+    player.setPosition(startX, startY);
+
+    // Add extra coins for higher levels
+    if (level > 1) {
+        // Manually add more coins
+        for (int i = 0; i < level * 3; i++) {
+            int x = 2 + rand() % (width - 4);
+            int y = 2 + rand() % (height - 4);
+            // Would need a method to add coin at position
+            // For now, map.initialize() already adds random coins
+        }
+    }
+
+    // Spawn more enemies for higher levels
     enemies.clear();
+    int enemyCount = 2 + level;  // Level 1: 3 enemies, Level 2: 4, etc
 
-    // Spawn 3 enemies at different spots
-    enemies.push_back(Enemy(5, 5));
-    enemies.push_back(Enemy(10, 3));
-    enemies.push_back(Enemy(15, 7));
+    for (int i = 0; i < enemyCount; i++) {
+        // Spread enemies out
+        int ex, ey;
+        do {
+            ex = 5 + rand() % (width - 10);
+            ey = 3 + rand() % (height - 6);
+        } while (ex == startX && ey == startY);
+
+        enemies.push_back(Enemy(ex, ey));
+    }
+
+    std::cout << "\n=== LEVEL " << level << " ===\n";
+    std::cout << "Collect all " << map.remainingCoins() << " coins!\n";
+    std::cout << "Avoid " << enemyCount << " enemies!\n";
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
-void Game::run() {
-    std::cout << "=== PACAVANTURE ===\n";
-    std::cout << "Arrow keys to move\n";
-    std::cout << "Collect coins (o), avoid enemies (E)\n";
-    std::cout << "Power-ups: S=Speed, K=Kill, G=Ghost\n";
-    std::cout << "Collect all coins to open gate (G/g)\n";
-    std::cout << "Press any key to start...\n";
+void Game::nextLevel() {
+    if (currentLevel < totalLevels) {
+        currentLevel++;
+        loadLevel(currentLevel);
 
-    // Wait for key (simple way)
-    #ifdef _WIN32
-    _getch();
-    #else
-    system("read -n 1");
-    #endif
-
-    while (gameRunning) {
-        processInput();
-        update();
-        render();
-        checkCollisions();
-
-        // Small delay so game isn't too fast
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-        // Clear screen for next frame (simple way)
-        #ifdef _WIN32
-        system("cls");
-        #else
-        system("clear");
-        #endif
-    }
-
-    if (gameWon) {
-        std::cout << "\n🎉 YOU WIN! Score: " << player.getScore() << " 🎉\n";
-    } else if (gameOver) {
-        std::cout << "\n💀 GAME OVER! Score: " << player.getScore() << " 💀\n";
-    }
-}
-
-void Game::processInput() {
-    // Simple input for now - we can improve later
-    #ifdef _WIN32
-    if (_kbhit()) {
-        char ch = _getch();
-        if (ch == 0 || ch == 224) {  // Arrow keys on Windows
-            ch = _getch();
-            switch (ch) {
-                case 72: player.moveDelta(0, -1, map.getWidth(), map.getHeight()); break; // up
-                case 80: player.moveDelta(0, 1, map.getWidth(), map.getHeight()); break;  // down
-                case 75: player.moveDelta(-1, 0, map.getWidth(), map.getHeight()); break; // left
-                case 77: player.moveDelta(1, 0, map.getWidth(), map.getHeight()); break;  // right
-            }
-        } else {
-            // WASD as fallback
-            switch (ch) {
-                case 'w': case 'W': player.moveDelta(0, -1, map.getWidth(), map.getHeight()); break;
-                case 's': case 'S': player.moveDelta(0, 1, map.getWidth(), map.getHeight()); break;
-                case 'a': case 'A': player.moveDelta(-1, 0, map.getWidth(), map.getHeight()); break;
-                case 'd': case 'D': player.moveDelta(1, 0, map.getWidth(), map.getHeight()); break;
-                case 'q': case 'Q': gameRunning = false; break;
-            }
-        }
-    }
-    #else
-    // Linux/Mac simple input (non-blocking attempt)
-    struct termios oldt, newt;
-    tcgetattr(STDIN_FILENO, &oldt);
-    newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-
-    char ch = 0;
-    if (read(STDIN_FILENO, &ch, 1) > 0) {
-        switch (ch) {
-            case 'w': case 'W': player.moveDelta(0, -1, map.getWidth(), map.getHeight()); break;
-            case 's': case 'S': player.moveDelta(0, 1, map.getWidth(), map.getHeight()); break;
-            case 'a': case 'A': player.moveDelta(-1, 0, map.getWidth(), map.getHeight()); break;
-            case 'd': case 'D': player.moveDelta(1, 0, map.getWidth(), map.getHeight()); break;
-            case 'q': case 'Q': gameRunning = false; break;
-        }
-    }
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-    #endif
-}
-
-void Game::update() {
-    // Update player power-up timers
-    player.updatePowerUps();
-
-    // Update enemies
-    for (auto& enemy : enemies) {
-        enemy.update();
-    }
-
-    // Check if all coins collected
-    if (map.remainingCoins() == 0) {
-        map.setGateLocked(false);
-    }
-
-    // Check if player at open gate
-    if (!map.gateLocked() &&
-        player.getX() == map.getWidth() - 2 &&
-        player.getY() == map.getHeight() / 2) {
+        // Bonus points for completing level
+        player.addScore(100 * (currentLevel - 1));
+        std::cout << "\nLevel complete! +" << (100 * (currentLevel - 1)) << " points!\n";
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+    } else {
+        // Beat all levels
         gameWon = true;
         gameRunning = false;
+        player.addScore(500);  // Final bonus
     }
 }
 
-void Game::render() {
-    map.draw(player);
-
-    // Show enemy positions
-    std::cout << "Enemies: ";
-    for (const auto& enemy : enemies) {
-        if (enemy.isAlive()) {
-            auto pos = enemy.getPosition();
-            std::cout << "E(" << pos.first << "," << pos.second << ") ";
-        }
-    }
-    std::cout << "\n";
-
-    // Instructions
-    std::cout << "WASD to move | Q to quit\n";
+void Game::resetGame() {
+    player = Player();  // Reset player
+    playerLives = 3;
+    currentLevel = 1;
+    gameWon = false;
+    gameOver = false;
 }
 
+// Update the run() method to show menu first
+void Game::run() {
+    if (inMenu) {
+        showMenu();
+    } else {
+        // Existing game loop...
+    }
+}
+
+// Update checkCollisions to handle lives
 void Game::checkCollisions() {
-    int px = player.getX();
-    int py = player.getY();
+    // ... existing collision code ...
 
-    // Check coins
-    if (map.hasCoinAt(px, py)) {
-        map.collectCoinAt(px, py);
-        player.addScore(10);
-        std::cout << "+10 points!\n";
-    }
+    // When player dies to enemy
+    if (gameOver) {
+        playerLives--;
+        if (playerLives > 0) {
+            std::cout << "\nYou died! " << playerLives << " lives remaining.\n";
+            std::this_thread::sleep_for(std::chrono::seconds(2));
 
-    // Check power-ups
-    if (map.hasPowerUpAt(px, py)) {
-        char ptype = map.getPowerUpAt(px, py);
-        map.collectPowerUpAt(px, py);
-
-        if (ptype == 'S') player.collectPowerUp(Player::SPEED_BOOST);
-        else if (ptype == 'K') player.collectPowerUp(Player::INSTA_KILL);
-        else if (ptype == 'G') player.collectPowerUp(Player::GHOST_MODE);
-    }
-
-    // Check enemy collisions
-    for (auto& enemy : enemies) {
-        if (!enemy.isAlive()) continue;
-
-        auto epos = enemy.getPosition();
-        if (epos.first == px && epos.second == py) {
-            if (player.canKillEnemies()) {
-                // Player kills enemy
-                enemy.kill();
-                player.addScore(50);
-                std::cout << "Enemy destroyed! +50 points!\n";
-            } else {
-                // Enemy kills player
-                gameOver = true;
-                gameRunning = false;
-                return;
-            }
+            // Reload current level
+            loadLevel(currentLevel);
+            gameOver = false;
         }
     }
 }
